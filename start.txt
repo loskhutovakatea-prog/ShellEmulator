@@ -1,3 +1,26 @@
+# Проверка Stage 3
+
 ls
-cd test
+
+# Переход по VFS
+cd home
 ls
+cd student
+ls
+cd projects
+ls
+cd python
+ls
+
+# Возврат назад
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
+
+# Проверка ошибки
+cd unknown

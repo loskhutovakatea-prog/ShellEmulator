@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vfs>
+    <folder name="home">
+        <folder name="student">
+            <folder name="documents">
+                <file name="hello.txt">Hello from VFS</file>
+            </folder>
+        </folder>
+    </folder>
+    <file name="readme.txt">Virtual file system</file>
+</vfs>

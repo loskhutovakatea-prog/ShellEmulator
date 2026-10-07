@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vfs>
+    <folder name="documents">
+        <file name="text.txt">Some text</file>
+        <file name="notes.txt">My notes</file>
+    </folder>
+    <folder name="images">
+        <file name="image1.txt">Image data</file>
+        <file name="image2.txt">Image data 2</file>
+    </folder>
+    <file name="readme.txt">Readme file</file>
+    <file name="test.txt">Test file</file>
+</vfs>

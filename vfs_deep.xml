@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vfs>
+    <folder name="home">
+        <folder name="student">
+            <folder name="projects">
+                <folder name="python">
+                    <file name="main.py">print("Hello")</file>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+</vfs>

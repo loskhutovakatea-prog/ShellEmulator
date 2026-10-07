@@ -1,4 +1,6 @@
 import argparse
+import calendar
+from datetime import datetime
 import shlex
 import xml.etree.ElementTree as ET
 
@@ -57,10 +59,77 @@ class Emulator:
             return False
 
         elif command == "ls":
+            if len(args) != 1:
+                print("Ошибка: неверные аргументы")
+                return True
+
             node = self.get_current_node()
 
             for child in node:
                 print(child.get("name"))
+
+        elif command == "tree":
+            if len(args) != 1:
+                print("Ошибка: неверные аргументы")
+                return True
+
+            node = self.get_current_node()
+
+            def print_tree(current_node, level):
+                for child in current_node:
+                    print("    " * level + child.get("name"))
+
+                    if child.tag == "folder":
+                        print_tree(child, level + 1)
+
+            print_tree(node, 0)
+
+        elif command == "head":
+            if len(args) != 2:
+                print("Ошибка: неверные аргументы")
+                return True
+
+            file_name = args[1]
+            node = self.get_current_node()
+
+            found = None
+
+            for child in node:
+                if child.tag == "file" and child.get("name") == file_name:
+                    found = child
+                    break
+
+            if found is None:
+                print("Ошибка: файл не найден")
+                return True
+
+            text = found.text or ""
+            lines = text.splitlines()
+
+            for line in lines[:10]:
+                print(line)
+
+        elif command == "cal":
+            if len(args) == 1:
+                now = datetime.now()
+                print(calendar.month(now.year, now.month))
+
+            elif len(args) == 3:
+                try:
+                    month = int(args[1])
+                    year = int(args[2])
+
+                    if month < 1 or month > 12:
+                        print("Ошибка: неверный месяц")
+                        return True
+
+                    print(calendar.month(year, month))
+
+                except ValueError:
+                    print("Ошибка: неверные аргументы")
+
+            else:
+                print("Ошибка: неверные аргументы")
 
         elif command == "cd":
             if len(args) != 2:

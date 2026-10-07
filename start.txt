@@ -1,18 +1,28 @@
-# Проверка Stage 3
+# Проверка Stage 4
 
 ls
+tree
 
-# Переход по VFS
+# Проверка head в корне
+head unknown.txt
+head
+
+# Проверка cal
+cal
+cal 10 2026
+cal 13 2026
+cal test 2026
+
+# Переход к файлу main.py
 cd home
-ls
 cd student
-ls
 cd projects
-ls
 cd python
-ls
 
-# Возврат назад
+ls
+head main.py
+
+# Возвращаемся назад
 cd ..
 ls
 cd ..

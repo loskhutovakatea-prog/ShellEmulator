@@ -1,36 +1,37 @@
-# Проверка Stage 4
+# Проверка Stage 5
 
 ls
 tree
 
-# Проверка head в корне
-head unknown.txt
-head
+# Проверка mkdir
+mkdir test
+ls
+mkdir test
+mkdir
 
-# Проверка cal
-cal
-cal 10 2026
-cal 13 2026
-cal test 2026
-
-# Переход к файлу main.py
+# Переход к папке python
 cd home
 cd student
 cd projects
 cd python
 
 ls
-head main.py
 
-# Возвращаемся назад
-cd ..
+# Проверка cp
+cp main.py main_copy.py
 ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
+head main_copy.py
 
-# Проверка ошибки
-cd unknown
+# Ошибки cp
+cp unknown.py copy.py
+cp main.py main_copy.py
+cp main.py
+
+# Возврат в корень
+cd ..
+cd ..
+cd ..
+cd ..
+
+ls
+tree

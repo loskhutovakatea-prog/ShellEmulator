@@ -1,8 +1,8 @@
 import argparse
 import calendar
-from datetime import datetime
 import shlex
 import xml.etree.ElementTree as ET
+from datetime import datetime
 
 
 class Emulator:
@@ -91,7 +91,6 @@ class Emulator:
 
             file_name = args[1]
             node = self.get_current_node()
-
             found = None
 
             for child in node:
@@ -130,6 +129,49 @@ class Emulator:
 
             else:
                 print("Ошибка: неверные аргументы")
+
+        elif command == "mkdir":
+            if len(args) != 2:
+                print("Ошибка: неверные аргументы")
+                return True
+
+            folder_name = args[1]
+            node = self.get_current_node()
+
+            for child in node:
+                if child.get("name") == folder_name:
+                    print("Ошибка: папка или файл уже существует")
+                    return True
+
+            ET.SubElement(node, "folder", {"name": folder_name})
+
+        elif command == "cp":
+            if len(args) != 3:
+                print("Ошибка: неверные аргументы")
+                return True
+
+            source_name = args[1]
+            destination_name = args[2]
+            node = self.get_current_node()
+
+            source = None
+
+            for child in node:
+                if child.tag == "file" and child.get("name") == source_name:
+                    source = child
+                    break
+
+            if source is None:
+                print("Ошибка: файл не найден")
+                return True
+
+            for child in node:
+                if child.get("name") == destination_name:
+                    print("Ошибка: файл или папка уже существует")
+                    return True
+
+            new_file = ET.SubElement(node, "file", {"name": destination_name})
+            new_file.text = source.text
 
         elif command == "cd":
             if len(args) != 2:

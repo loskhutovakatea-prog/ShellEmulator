@@ -209,7 +209,7 @@ def run_script(emulator, script_path):
                 if not line or line.startswith("#"):
                     continue
 
-                print("shell>", line)
+                print("vfs>", line)
 
                 if not emulator.execute(line):
                     break
@@ -233,7 +233,7 @@ def main():
     else:
         while True:
             try:
-                line = input("shell> ")
+                line = input("vfs> ")
 
                 if not emulator.execute(line):
                     break
